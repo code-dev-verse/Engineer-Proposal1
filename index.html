@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proposal Terminal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff88;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 18px;
+      padding: 20px;
+    }
+    #terminal {
+      white-space: pre-line;
+      overflow-wrap: break-word;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #00ff88;
+      animation: blink 1s infinite;
+      vertical-align: bottom;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <script>
+    const lines = [
+      "boosting proposal.exe",
+     " Establishing secure cnnection...",
+     "Loading heart module...",
+     "initializing feelings.js",
+     "Checking conpatibility > 100%",
+     "Building future plans...",
+     " ",
+     "Dear You",
+     "Ever since you have entered in my life",
+     "the bugs disappeared, and everthing started ti compile perfectly",
+     "",
+     ""
+    ];
+    const terminal = document.getElementById("terminal");
+    let i = 0;
+
+    function typeLine() {
+      if (i < lines.length) {
+        const line = document.createElement("div");
+        line.textContent = "> " + lines[i];
+        terminal.appendChild(line);
+        i++;
+        setTimeout(typeLine, 800);
+      } else {
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        terminal.appendChild(cursor);
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
